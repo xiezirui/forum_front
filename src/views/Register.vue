@@ -143,7 +143,7 @@
                             data:{
                                 username:this.ruleForm.username,
                                 password:this.ruleForm.pass,
-                                gender:this.ruleForm.gender,
+                                gender:parseInt(this.ruleForm.gender),
                                 email:this.ruleForm.email
                             }
                         }).then(function(response){

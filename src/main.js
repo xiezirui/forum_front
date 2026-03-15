@@ -69,7 +69,7 @@ Vue.config.productionTip = false
 //全局注册axios
 Vue.prototype.$axios = axios
 
-axios.defaults.baseURL = 'http://localhost:8089/forum_server'
+axios.defaults.baseURL = 'http://localhost:8089/'
 
 /**
  *  axios请求拦截器,每次请求带上token
@@ -89,19 +89,19 @@ axios.interceptors.request.use(config => {
 axios.interceptors.response.use(
     function (response) {
         const code = response.data.code
-        if (code == 201 || code == 202 ) {
+        if (code == 201 || code == 202) {
             //说明token错误或者token过期
             const msg = response.data.msg;
             alert(msg);
             return router.push("/login");
-        // }else if (code == 301){
-        //     const msg = response.data.msg;
-        //     alert(msg);
-        //     return router.push("/");
-        }else if(code == 200){
+            // }else if (code == 301){
+            //     const msg = response.data.msg;
+            //     alert(msg);
+            //     return router.push("/");
+        } else if (code == 200) {
             //更新未读消息数量
             return response;
-        }else {
+        } else {
             return response;
         }
     },
